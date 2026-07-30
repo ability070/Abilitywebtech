@@ -147,6 +147,12 @@
         }
         .price-card h3 { font-size: 1.4rem; margin-bottom: 5px; color: var(--dark); }
         .package-subtitle { font-size: 0.9rem; color: var(--primary); font-weight: 700; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase; }
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
         .price-card ul { list-style: none; margin-bottom: 30px; text-align: left; flex-grow: 1; }
         .price-card ul li { margin-bottom: 12px; color: var(--gray); display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
         .price-card ul li::before { content: "✓"; color: var(--primary); font-weight: bold; flex-shrink: 0; margin-top: 2px; }
@@ -404,7 +410,7 @@
                 </div>
             </div>
 
-            <!-- NEW: Custom Template CTA Section -->
+            <!-- Custom Template CTA Section -->
             <div class="custom-template-cta">
                 <h3>🎯 Need a Custom Template?</h3>
                 <p>Can't find what you're looking for? I can create a custom template tailored to your specific needs.</p>
@@ -413,7 +419,7 @@
         </div>
     </section>
 
-    <!-- PACKAGES & FEATURES (No Prices) -->
+    <!-- PACKAGES & FEATURES WITH PRICES -->
     <section id="packages">
         <div class="container">
             <h2>Custom Website Packages</h2>
@@ -421,6 +427,7 @@
                 <div class="price-card">
                     <h3>Personal Website</h3>
                     <p class="package-subtitle">Be Online</p>
+                    <div class="package-price">₦80,000</div>
                     <ul>
                         <li>1 Page Website</li>
                         <li>Mobile Responsive Design</li>
@@ -428,12 +435,13 @@
                         <li>1 Year .com Domain</li>
                         <li>2 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Personal Website')" class="btn" style="width: 100%;">Get Started</a>
+                    <a href="#order-form" onclick="selectPackage('Personal Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
                 </div>
 
                 <div class="price-card featured">
                     <h3>Company Website</h3>
                     <p class="package-subtitle">Essential for Your Business</p>
+                    <div class="package-price">₦150,000</div>
                     <ul>
                         <li>1 Year .com Domain</li>
                         <li>Mobile Responsive Design</li>
@@ -442,12 +450,13 @@
                         <li>Social Media Links Integration</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Company Website')" class="btn" style="width: 100%;">Get Started</a>
+                    <a href="#order-form" onclick="selectPackage('Company Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
                 </div>
 
                 <div class="price-card">
                     <h3>E-Commerce Website</h3>
                     <p class="package-subtitle">Be Visible & Sell Online</p>
+                    <div class="package-price">₦180,000</div>
                     <ul>
                         <li>Up to 5 Pages</li>
                         <li>Mobile Responsive Design</li>
@@ -456,7 +465,59 @@
                         <li>1 Year .com Domain</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('E-Commerce Website')" class="btn" style="width: 100%;">Get Started</a>
+                    <a href="#order-form" onclick="selectPackage('E-Commerce Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANCED SOLUTIONS WITH PRICES -->
+    <section id="pricing" style="background-color: var(--light);">
+        <div class="container">
+            <h2>Advanced Solutions</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Banking Website</h3>
+                    <p class="package-subtitle">Secure & Easy Mobile Access</p>
+                    <div class="package-price">₦500,000</div>
+                    <ul>
+                        <li>1 Year .com Domain</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Custom Admin Dashboard</li>
+                        <li>Live Chat Support</li>
+                        <li>4 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('Banking Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Logistics Website</h3>
+                    <p class="package-subtitle">Efficient Tracking & Management</p>
+                    <div class="package-price">₦400,000</div>
+                    <ul>
+                        <li>1 Year .com Domain</li>
+                        <li>Receipt & Tracking System</li>
+                        <li>Custom Admin Dashboard</li>
+                        <li>Live Chat Support</li>
+                        <li>Contact Us Page</li>
+                        <li>7 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('Logistics Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Broker Website</h3>
+                    <p class="package-subtitle">Professional Brokerage Platform</p>
+                    <div class="package-price">₦500,000</div>
+                    <ul>
+                        <li>1 Year .com Domain</li>
+                        <li>Custom Admin Dashboard</li>
+                        <li>Live Chat Support</li>
+                        <li>Payment Integration</li>
+                        <li>Contact Us Page</li>
+                        <li>4 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('Broker Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
                 </div>
             </div>
         </div>
@@ -494,6 +555,7 @@
                             <option value="E-Commerce Website">E-Commerce Website</option>
                             <option value="Banking Website">Banking Website</option>
                             <option value="Logistics Website">Logistics Website</option>
+                            <option value="Broker Website">Broker Website</option>
                             <option value="Custom Template Development">Custom Template Development</option>
                             <option value="Custom Project">Custom Project / Other</option>
                         </select>
@@ -597,7 +659,7 @@
             let handler = PaystackPop.setup({
                 // ⚠️ IMPORTANT: Replace this with your actual Paystack Public Key!
                 // Go to Paystack Dashboard > Settings > API Keys & Webhooks
-                key: 'pk_test_7c590d5256eb819456c30b925d303b7d44d149e2', 
+                key: 'pk_test_YOUR_PUBLIC_KEY_HERE', 
                 
                 email: email,
                 amount: amountInNaira * 100, // Paystack calculates in Kobo (Naira * 100)
