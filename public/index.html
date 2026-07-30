@@ -11,6 +11,10 @@
     <meta property="og:image" content="images/profile.jpeg"> 
     <meta property="og:url" content="https://yourwebsite.com">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico"> 
+    
+    <!-- PAYSTACK INLINE JS -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
     <style>
         /* --- GENERAL STYLES --- */
         :root {
@@ -20,6 +24,7 @@
             --gray: #64748b;
             --whatsapp: #25D366;
             --success: #10b981;
+            --paystack: #0ba4db;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -35,6 +40,8 @@
         .btn:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
         .btn-preview { background: var(--success); }
         .btn-preview:hover { background: #059669; }
+        .btn-paystack { background: var(--paystack); }
+        .btn-paystack:hover { background: #0984b3; }
 
         /* --- WELCOME BANNER --- */
         .welcome-banner {
@@ -90,6 +97,29 @@
         
         .template-buttons { display: flex; gap: 10px; margin-top: 15px; }
         .template-buttons .btn { flex: 1; padding: 10px; font-size: 0.9rem; }
+
+        /* --- CUSTOM TEMPLATE CTA --- */
+        .custom-template-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .custom-template-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .custom-template-cta p {
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* --- PACKAGES SECTION --- */
         #packages, #pricing { background: white; }
@@ -158,6 +188,7 @@
             .logo-text { font-size: 1.1rem; }
             .welcome-banner { font-size: 0.95rem; padding: 15px 10px; }
             .template-buttons { flex-direction: column; }
+            .custom-template-cta h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -176,7 +207,7 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#templates">Templates</a></li>
                     <li><a href="#packages">Packages</a></li>
-                    <li><a href="#order-form">Order</a></li>
+                    <li><a href="#order-form">Custom Quote</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -238,12 +269,12 @@
         </div>
     </section>
 
-    <!-- PREMIUM TEMPLATES SECTION WITH LIVE PREVIEWS -->
+    <!-- PREMIUM TEMPLATES SECTION WITH PAYSTACK -->
     <section id="templates">
         <div class="container">
             <h2>Premium Website Templates</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: -30px auto 40px; font-size: 1.1rem;">
-                Kickstart your project with our professionally designed, fully responsive, and easy-to-customize website templates. Preview live demos and purchase to get the source code instantly!
+                Kickstart your project with our professionally designed, fully responsive templates. Preview live demos and purchase securely via Paystack to get the source code instantly!
             </p>
             <div class="portfolio-grid">
                 <!-- Template 1: Portfolio -->
@@ -256,14 +287,13 @@
                             <li>✓ HTML5, CSS3, Vanilla JS</li>
                             <li>✓ Fully Responsive</li>
                             <li>✓ Dark/Light Mode Toggle</li>
-                            <li>✓ Contact Form Ready</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$29</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦45,000</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/sb-freelancer" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: Modern Portfolio ($29)')" class="btn">💳 Buy Now</a>
+                            <button onclick="payWithPaystack('Modern Portfolio Template', 45000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -278,14 +308,13 @@
                             <li>✓ HTML5, CSS3, Vanilla JS</li>
                             <li>✓ Mobile-First Design</li>
                             <li>✓ Payment Gateway UI Ready</li>
-                            <li>✓ Product Filtering</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$49</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦75,000</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/sb-shop" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: E-Commerce Starter ($49)')" class="btn">💳 Buy Now</a>
+                            <button onclick="payWithPaystack('E-Commerce Starter Template', 75000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -300,14 +329,13 @@
                             <li>✓ 5+ Pre-built Pages</li>
                             <li>✓ SEO Optimized Structure</li>
                             <li>✓ Contact Form Integrated</li>
-                            <li>✓ Modern Animations</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$39</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦60,000</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/agency" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: Corporate Business ($39)')" class="btn">💳 Buy Now</a>
+                            <button onclick="payWithPaystack('Corporate Business Template', 60000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -322,14 +350,13 @@
                             <li>✓ Menu Display System</li>
                             <li>✓ Table Reservation Form</li>
                             <li>✓ Image Gallery</li>
-                            <li>✓ Mobile Optimized</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$35</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦55,000</span>
                         </div>
                         <div class="template-buttons">
-                            <a href="https://startbootstrap.com/demo/restaurant" target="_blank" class="btn btn-preview">️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: Restaurant & Cafe ($35)')" class="btn">💳 Buy Now</a>
+                            <a href="https://startbootstrap.com/demo/restaurant" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
+                            <button onclick="payWithPaystack('Restaurant & Cafe Template', 55000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -344,14 +371,13 @@
                             <li>✓ Article Layouts</li>
                             <li>✓ Category Pages</li>
                             <li>✓ Newsletter Integration</li>
-                            <li>✓ Social Sharing</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$32</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦50,000</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/clean-blog" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: Blog & Magazine ($32)')" class="btn">💳 Buy Now</a>
+                            <button onclick="payWithPaystack('Blog & Magazine Template', 50000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -365,34 +391,82 @@
                         <ul style="list-style: none; margin-bottom: 15px; font-size: 0.9rem; color: var(--gray);">
                             <li>✓ Conversion Optimized</li>
                             <li>✓ Feature Sections</li>
-                            <li>✓ Testimonials</li>
                             <li>✓ Pricing Tables</li>
                         </ul>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">$25</span>
+                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦40,000</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/landing-page" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
-                            <a href="#order-form" onclick="selectPackage('Template: Product Landing Page ($25)')" class="btn">💳 Buy Now</a>
+                            <button onclick="payWithPaystack('Product Landing Page Template', 40000)" class="btn btn-paystack">💳 Buy Now</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 50px; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h3 style="margin-bottom: 15px; color: var(--dark);">🎯 Need a Custom Template?</h3>
-                <p style="color: var(--gray); margin-bottom: 20px;">Can't find what you're looking for? I can create a custom template tailored to your specific needs.</p>
+
+            <!-- NEW: Custom Template CTA Section -->
+            <div class="custom-template-cta">
+                <h3>🎯 Need a Custom Template?</h3>
+                <p>Can't find what you're looking for? I can create a custom template tailored to your specific needs.</p>
                 <a href="#order-form" onclick="selectPackage('Custom Template Development')" class="btn">Request Custom Template</a>
             </div>
         </div>
     </section>
 
     <!-- PACKAGES & FEATURES (No Prices) -->
-   
-    <!-- FORMSPREE ORDER / INQUIRY FORM -->
+    <section id="packages">
+        <div class="container">
+            <h2>Custom Website Packages</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Personal Website</h3>
+                    <p class="package-subtitle">Be Online</p>
+                    <ul>
+                        <li>1 Page Website</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Contact Form Integration</li>
+                        <li>1 Year .com Domain</li>
+                        <li>2 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('Personal Website')" class="btn" style="width: 100%;">Get Started</a>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Company Website</h3>
+                    <p class="package-subtitle">Essential for Your Business</p>
+                    <ul>
+                        <li>1 Year .com Domain</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Contact Form Integration</li>
+                        <li>Live Chat Support</li>
+                        <li>Social Media Links Integration</li>
+                        <li>4 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('Company Website')" class="btn" style="width: 100%;">Get Started</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>E-Commerce Website</h3>
+                    <p class="package-subtitle">Be Visible & Sell Online</p>
+                    <ul>
+                        <li>Up to 5 Pages</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Payment Gateway Integration</li>
+                        <li>Live Chat Support</li>
+                        <li>1 Year .com Domain</li>
+                        <li>4 Days Delivery</li>
+                    </ul>
+                    <a href="#order-form" onclick="selectPackage('E-Commerce Website')" class="btn" style="width: 100%;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMSPREE ORDER / INQUIRY FORM (For Custom Projects) -->
     <section id="order-form" style="background-color: white; border-top: 1px solid #e2e8f0;">
         <div class="container">
-            <h2>Request a Quote / Order Now</h2>
+            <h2>Request a Custom Quote</h2>
+            <p style="text-align: center; color: var(--gray); margin-bottom: 30px;">Need something unique? Fill out the form below and let's discuss your custom project.</p>
             <div style="display: flex; justify-content: center;">
                 <form action="https://formspree.io/f/mzdnwbjk" method="POST" style="background: white; border-radius: 15px; padding: 40px; max-width: 600px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
                     
@@ -412,27 +486,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="package-select">Interested Package / Template</label>
+                        <label for="package-select">Project Type</label>
                         <select id="package-select" name="package" class="form-control" required>
                             <option value="" disabled selected>Select an option...</option>
-                            <optgroup label=" Premium Templates">
-                                <option value="Template: Modern Portfolio ($29)">Template: Modern Portfolio ($29)</option>
-                                <option value="Template: E-Commerce Starter ($49)">Template: E-Commerce Starter ($49)</option>
-                                <option value="Template: Corporate Business ($39)">Template: Corporate Business ($39)</option>
-                                <option value="Template: Restaurant & Cafe ($35)">Template: Restaurant & Cafe ($35)</option>
-                                <option value="Template: Blog & Magazine ($32)">Template: Blog & Magazine ($32)</option>
-                                <option value="Template: Product Landing Page ($25)">Template: Product Landing Page ($25)</option>
-                            </optgroup>
-                            <optgroup label="🛠️ Custom Development">
-                                <option value="Personal Website">Personal Website</option>
-                                <option value="Company Website">Company Website</option>
-                                <option value="E-Commerce Website">E-Commerce Website</option>
-                                <option value="Banking Website">Banking Website</option>
-                                <option value="Logistics Website">Logistics Website</option>
-                                <option value="Broker Website">Broker Website</option>
-                                <option value="Custom Template Development">Custom Template Development</option>
-                                <option value="Custom Project">Custom Project / Other</option>
-                            </optgroup>
+                            <option value="Personal Website">Personal Website</option>
+                            <option value="Company Website">Company Website</option>
+                            <option value="E-Commerce Website">E-Commerce Website</option>
+                            <option value="Banking Website">Banking Website</option>
+                            <option value="Logistics Website">Logistics Website</option>
+                            <option value="Custom Template Development">Custom Template Development</option>
+                            <option value="Custom Project">Custom Project / Other</option>
                         </select>
                     </div>
  
@@ -445,41 +508,14 @@
                         <span style="font-size: 1.5rem;">🛡️</span>
                         <div>
                             <p style="font-size: 0.9rem; color: #166534; font-weight: 600; margin: 0;">Your Data is Secure</p>
-                            <p style="font-size: 0.8rem; color: #15803d; margin: 0;">Your personal information is collected and processed in compliance with the Nigeria Data Protection Act (NDPA) 2023. We are committed to protecting your data and handling it securely, lawfully, and confidentially.</p>
+                            <p style="font-size: 0.8rem; color: #15803d; margin: 0;">Your personal information is collected and processed in compliance with the Nigeria Data Protection Act (NDPA) 2023.</p>
                         </div>
                     </div>
 
                     <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem;">
                         🚀 Send Request
                     </button>
-                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                        🔒 Powered by Formspree. I will get back to you within 24 hours with payment details and delivery instructions.
-                    </p>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section id="testimonials" style="background-color: var(--light);">
-        <div class="container">
-            <h2>What My Clients Say</h2>
-            <div class="portfolio-grid">
-                <div class="project-card" style="padding: 30px; text-align: center;">
-                    <p style="font-style: italic; color: var(--gray); margin-bottom: 20px;">"Ability delivered our company website in record time. His attention to detail and cybersecurity knowledge gave us peace of mind. Highly recommended!"</p>
-                    <h4 style="color: var(--primary);">- Solomon Edoh</h4>
-                    <p style="font-size: 0.9rem; color: var(--gray);">CEO, Vicsolmec Security Limited</p>
-                </div>
-                <div class="project-card" style="padding: 30px; text-align: center;">
-                    <p style="font-style: italic; color: var(--gray); margin-bottom: 20px;">"Professional, responsive, and truly understands modern web design. My e-commerce sales have improved since the new site launch."</p>
-                    <h4 style="color: var(--primary);">- Morgan Nseogbong</h4>
-                    <p style="font-size: 0.9rem; color: var(--gray);">Founder, Nseries Art</p>
-                </div>
-                <div class="project-card" style="padding: 30px; text-align: center;">
-                    <p style="font-style: italic; color: var(--gray); margin-bottom: 20px;">"The best web developer in Port Harcourt. He didn't just build a site; he secured it and taught us how to manage it."</p>
-                    <h4 style="color: var(--primary);">- Emmaesomonu</h4>
-                    <p style="font-size: 0.9rem; color: var(--gray);">Director, Ella Golden Spot Hotel</p>
-                </div>
             </div>
         </div>
     </section>
@@ -535,13 +571,68 @@
         </svg>
     </a>
 
-    <!-- JAVASCRIPT FOR AUTO-SELECTING PACKAGE/TEMPLATE -->
+    <!-- JAVASCRIPT FOR PAYSTACK & FORM -->
     <script>
+        // Function to handle custom project form selection
         function selectPackage(itemName) {
             const selectElement = document.getElementById('package-select');
             if (selectElement) {
                 selectElement.value = itemName;
             }
+        }
+
+        // Function to handle Paystack Payment
+        function payWithPaystack(templateName, amountInNaira) {
+            // 1. Get customer details (You can replace this with a custom modal for better UX)
+            let email = prompt("Please enter your email address to receive the template:");
+            if (!email || !email.includes('@')) {
+                alert("A valid email address is required to send your template.");
+                return;
+            }
+            
+            let name = prompt("Please enter your full name:");
+            if (!name) name = "Valued Customer";
+
+            // 2. Setup Paystack Popup
+            let handler = PaystackPop.setup({
+                // ⚠️ IMPORTANT: Replace this with your actual Paystack Public Key!
+                // Go to Paystack Dashboard > Settings > API Keys & Webhooks
+                key: 'pk_test_7c590d5256eb819456c30b925d303b7d44d149e2', 
+                
+                email: email,
+                amount: amountInNaira * 100, // Paystack calculates in Kobo (Naira * 100)
+                currency: 'NGN',
+                ref: 'ABN_' + Math.floor((Math.random() * 1000000000) + 1), // Generates a unique reference
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Template Name",
+                            variable_name: "template_name",
+                            value: templateName
+                        },
+                        {
+                            display_name: "Customer Name",
+                            variable_name: "customer_name",
+                            value: name
+                        }
+                    ]
+                },
+                callback: function(response) {
+                    // Payment was successful!
+                    let message = 'Payment successful! Reference: ' + response.reference + '.\n\nPlease click OK to message me on WhatsApp with this reference so I can send you the template files immediately.';
+                    alert(message);
+                    
+                    // Redirect to WhatsApp with pre-filled message containing the reference
+                    let whatsappMessage = `Hi Ability! I just successfully paid for the *${templateName}*.\nMy Paystack Reference is: *${response.reference}*.\nPlease send me the download link. Thank you!`;
+                    window.location.href = "https://wa.me/+2349152004538?text=" + encodeURIComponent(whatsappMessage);
+                },
+                onClose: function() {
+                    alert('Transaction was not completed. Window closed.');
+                }
+            });
+            
+            // Open the Paystack iframe
+            handler.openIframe();
         }
     </script>
 
