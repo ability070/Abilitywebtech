@@ -435,7 +435,10 @@
                         <li>1 Year .com Domain</li>
                         <li>2 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Personal Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('Personal Website', 80000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('Personal Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
 
                 <div class="price-card featured">
@@ -450,7 +453,10 @@
                         <li>Social Media Links Integration</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Company Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('Company Website', 150000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('Company Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
 
                 <div class="price-card">
@@ -465,7 +471,10 @@
                         <li>1 Year .com Domain</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('E-Commerce Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('E-Commerce Website', 180000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('E-Commerce Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -487,7 +496,10 @@
                         <li>Live Chat Support</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Banking Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('Banking Website', 500000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('Banking Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
 
                 <div class="price-card featured">
@@ -502,7 +514,10 @@
                         <li>Contact Us Page</li>
                         <li>7 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Logistics Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('Logistics Website', 400000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('Logistics Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
 
                 <div class="price-card">
@@ -517,7 +532,10 @@
                         <li>Contact Us Page</li>
                         <li>4 Days Delivery</li>
                     </ul>
-                    <a href="#order-form" onclick="selectPackage('Broker Website')" class="btn" style="width: 100%;">📋 Get Quote</a>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button onclick="payWithPaystack('Broker Website', 500000)" class="btn btn-paystack" style="width: 100%;">💳 Pay Now</button>
+                        <a href="#order-form" onclick="selectPackage('Broker Website')" class="btn" style="width: 100%; background: var(--gray);">📋 Get Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -644,11 +662,11 @@
         }
 
         // Function to handle Paystack Payment
-        function payWithPaystack(templateName, amountInNaira) {
+        function payWithPaystack(itemName, amountInNaira) {
             // 1. Get customer details (You can replace this with a custom modal for better UX)
-            let email = prompt("Please enter your email address to receive the template:");
+            let email = prompt("Please enter your email address to receive your receipt/details:");
             if (!email || !email.includes('@')) {
-                alert("A valid email address is required to send your template.");
+                alert("A valid email address is required to proceed.");
                 return;
             }
             
@@ -659,7 +677,7 @@
             let handler = PaystackPop.setup({
                 // ⚠️ IMPORTANT: Replace this with your actual Paystack Public Key!
                 // Go to Paystack Dashboard > Settings > API Keys & Webhooks
-                key: 'pk_test_7c590d5256eb819456c30b925d303b7d44d149e2', 
+                key: 'pk_live_e8b893fa426ea57e8090d77b75bc4430cd88c4b9', 
                 
                 email: email,
                 amount: amountInNaira * 100, // Paystack calculates in Kobo (Naira * 100)
@@ -668,9 +686,9 @@
                 metadata: {
                     custom_fields: [
                         {
-                            display_name: "Template Name",
-                            variable_name: "template_name",
-                            value: templateName
+                            display_name: "Item Name",
+                            variable_name: "item_name",
+                            value: itemName
                         },
                         {
                             display_name: "Customer Name",
@@ -681,11 +699,11 @@
                 },
                 callback: function(response) {
                     // Payment was successful!
-                    let message = 'Payment successful! Reference: ' + response.reference + '.\n\nPlease click OK to message me on WhatsApp with this reference so I can send you the template files immediately.';
+                    let message = 'Payment successful! Reference: ' + response.reference + '.\n\nPlease click OK to message me on WhatsApp with this reference so we can proceed with your project or send the template files.';
                     alert(message);
                     
                     // Redirect to WhatsApp with pre-filled message containing the reference
-                    let whatsappMessage = `Hi Ability! I just successfully paid for the *${templateName}*.\nMy Paystack Reference is: *${response.reference}*.\nPlease send me the download link. Thank you!`;
+                    let whatsappMessage = `Hi Ability! I just successfully paid for the *${itemName}*.\nMy Paystack Reference is: *${response.reference}*.\nPlease let me know the next steps. Thank you!`;
                     window.location.href = "https://wa.me/+2349152004538?text=" + encodeURIComponent(whatsappMessage);
                 },
                 onClose: function() {
