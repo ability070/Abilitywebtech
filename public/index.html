@@ -146,13 +146,17 @@
             background: linear-gradient(to bottom, #eff6ff, #ffffff); 
         }
         .price-card h3 { font-size: 1.4rem; margin-bottom: 5px; color: var(--dark); }
-        .package-subtitle { font-size: 0.9rem; color: var(--primary); font-weight: 700; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase; }
-        .package-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
+        .package-subtitle { font-size: 0.9rem; color: var(--primary); font-weight: 700; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        
+        /* --- DUAL CURRENCY PRICING STYLES --- */
+        .price-display { text-align: center; margin-bottom: 25px; }
+        .price-naira { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; }
+        .price-usd { font-size: 1.1rem; color: var(--gray); font-weight: 600; display: block; margin-top: 6px; }
+        
+        .template-price-display { text-align: center; margin-bottom: 15px; }
+        .template-price-naira { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; }
+        .template-price-usd { font-size: 0.95rem; color: var(--gray); font-weight: 600; display: block; margin-top: 4px; }
+
         .price-card ul { list-style: none; margin-bottom: 30px; text-align: left; flex-grow: 1; }
         .price-card ul li { margin-bottom: 12px; color: var(--gray); display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
         .price-card ul li::before { content: "✓"; color: var(--primary); font-weight: bold; flex-shrink: 0; margin-top: 2px; }
@@ -195,6 +199,7 @@
             .welcome-banner { font-size: 0.95rem; padding: 15px 10px; }
             .template-buttons { flex-direction: column; }
             .custom-template-cta h3 { font-size: 1.5rem; }
+            .price-naira { font-size: 2rem; }
         }
     </style>
 </head>
@@ -280,7 +285,7 @@
         <div class="container">
             <h2>Premium Website Templates</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: -30px auto 40px; font-size: 1.1rem;">
-                Kickstart your project with our professionally designed, fully responsive templates. Preview live demos and purchase securely via Paystack to get the source code instantly!
+                Kickstart your project with our professionally designed, fully responsive templates. Preview live demos and purchase securely via Paystack <strong>(International cards accepted!)</strong> to get the source code instantly!
             </p>
             <div class="portfolio-grid">
                 <!-- Template 1: Portfolio -->
@@ -294,8 +299,9 @@
                             <li>✓ Fully Responsive</li>
                             <li>✓ Dark/Light Mode Toggle</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://modern-portfolio-khaki-seven.vercel.app/" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -315,8 +321,9 @@
                             <li>✓ Mobile-First Design</li>
                             <li>✓ Payment Gateway UI Ready</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://e-commerce-pi-sage-46.vercel.app/" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -336,8 +343,9 @@
                             <li>✓ SEO Optimized Structure</li>
                             <li>✓ Contact Form Integrated</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://co-operate-business.vercel.app/" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -357,8 +365,9 @@
                             <li>✓ Table Reservation Form</li>
                             <li>✓ Image Gallery</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/restaurant" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -378,8 +387,9 @@
                             <li>✓ Category Pages</li>
                             <li>✓ Newsletter Integration</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/clean-blog" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -399,8 +409,9 @@
                             <li>✓ Feature Sections</li>
                             <li>✓ Pricing Tables</li>
                         </ul>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">₦7,000</span>
+                        <div class="template-price-display">
+                            <span class="template-price-naira">₦7,000</span>
+                            <span class="template-price-usd">~ $5 USD</span>
                         </div>
                         <div class="template-buttons">
                             <a href="https://startbootstrap.com/demo/landing-page" target="_blank" class="btn btn-preview">👁️ Live Preview</a>
@@ -427,7 +438,10 @@
                 <div class="price-card">
                     <h3>Personal Website</h3>
                     <p class="package-subtitle">Be Online</p>
-                    <div class="package-price">₦80,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦80,000</span>
+                        <span class="price-usd">~ $55 USD</span>
+                    </div>
                     <ul>
                         <li>1 Page Website</li>
                         <li>Mobile Responsive Design</li>
@@ -444,7 +458,10 @@
                 <div class="price-card featured">
                     <h3>Company Website</h3>
                     <p class="package-subtitle">Essential for Your Business</p>
-                    <div class="package-price">₦150,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦150,000</span>
+                        <span class="price-usd">~ $100 USD</span>
+                    </div>
                     <ul>
                         <li>1 Year .com Domain</li>
                         <li>Mobile Responsive Design</li>
@@ -462,7 +479,10 @@
                 <div class="price-card">
                     <h3>E-Commerce Website</h3>
                     <p class="package-subtitle">Be Visible & Sell Online</p>
-                    <div class="package-price">₦180,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦180,000</span>
+                        <span class="price-usd">~ $120 USD</span>
+                    </div>
                     <ul>
                         <li>Up to 5 Pages</li>
                         <li>Mobile Responsive Design</li>
@@ -488,7 +508,10 @@
                 <div class="price-card">
                     <h3>Banking Website</h3>
                     <p class="package-subtitle">Secure & Easy Mobile Access</p>
-                    <div class="package-price">₦500,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦500,000</span>
+                        <span class="price-usd">~ $335 USD</span>
+                    </div>
                     <ul>
                         <li>1 Year .com Domain</li>
                         <li>Mobile Responsive Design</li>
@@ -505,7 +528,10 @@
                 <div class="price-card featured">
                     <h3>Logistics Website</h3>
                     <p class="package-subtitle">Efficient Tracking & Management</p>
-                    <div class="package-price">₦400,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦400,000</span>
+                        <span class="price-usd">~ $270 USD</span>
+                    </div>
                     <ul>
                         <li>1 Year .com Domain</li>
                         <li>Receipt & Tracking System</li>
@@ -523,7 +549,10 @@
                 <div class="price-card">
                     <h3>Broker Website</h3>
                     <p class="package-subtitle">Professional Brokerage Platform</p>
-                    <div class="package-price">₦500,000</div>
+                    <div class="price-display">
+                        <span class="price-naira">₦500,000</span>
+                        <span class="price-usd">~ $335 USD</span>
+                    </div>
                     <ul>
                         <li>1 Year .com Domain</li>
                         <li>Custom Admin Dashboard</li>
@@ -663,6 +692,9 @@
 
         // Function to handle Paystack Payment
         function payWithPaystack(itemName, amountInNaira) {
+            // Note: Amount is processed in NGN. Paystack and international banks 
+            // will automatically handle the currency conversion for foreign cards.
+            
             // 1. Get customer details (You can replace this with a custom modal for better UX)
             let email = prompt("Please enter your email address to receive your receipt/details:");
             if (!email || !email.includes('@')) {
