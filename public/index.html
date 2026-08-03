@@ -201,6 +201,25 @@
             .custom-template-cta h3 { font-size: 1.5rem; }
             .price-naira { font-size: 2rem; }
         }
+
+                /* --- REVIEWS SECTION --- */
+        #reviews { background: white; border-top: 1px solid #e2e8f0; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .review-card { background: var(--light); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; }
+        .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .review-header { display: flex; align-items: center; gap: 15px; }
+        .review-avatar { width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; }
+        .review-info h4 { font-size: 1.05rem; color: var(--dark); margin: 0; }
+        .review-info p { font-size: 0.85rem; color: var(--gray); margin: 0; }
+        .review-stars { color: #fbbf24; font-size: 1.2rem; letter-spacing: 2px; }
+        .review-text { color: var(--dark); font-size: 0.95rem; line-height: 1.6; flex-grow: 1; font-style: italic; }
+
+        .review-form-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .star-rating { display: flex; gap: 8px; font-size: 2.2rem; color: #cbd5e1; cursor: pointer; justify-content: center; margin-bottom: 20px; }
+        .star-rating .star { transition: color 0.2s, transform 0.2s; }
+        .star-rating .star.active { color: #fbbf24; }
+        .star-rating .star:hover { transform: scale(1.1); }
+
     </style>
 </head>
 <body>
@@ -629,6 +648,101 @@
         </div>
     </section>
 
+        <!-- REVIEWS SECTION -->
+    <section id="reviews">
+        <div class="container">
+            <h2>What My Clients Say</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 600px; margin: -30px auto 40px;">
+                Don't just take my word for it. Here is what customers are saying about ABN Technologies.
+            </p>
+            
+            <!-- Displayed Reviews -->
+            <div class="reviews-grid" id="reviews-container">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">C</div>
+                        <div class="review-info">
+                            <h4>Chinedu O.</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Ability built an incredible e-commerce site for my business. It's fast, secure, and my customers love the design. Highly recommended!"</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">A</div>
+                        <div class="review-info">
+                            <h4>Amaka E.</h4>
+                            <p>Freelancer</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The portfolio template I bought was exactly what I needed. Clean code and very easy to customize. Great support!"</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">T</div>
+                        <div class="review-info">
+                            <h4>Tunde B.</h4>
+                            <p>Logistics CEO</p>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Professional, timely delivery, and the tracking system works flawlessly. ABN Technologies is the real deal."</p>
+                </div>
+            </div>
+
+            <!-- Review Submission Form -->
+            <div class="review-form-container">
+                <h3 style="text-align: center; margin-bottom: 20px;">Leave a Review</h3>
+                <form action="https://formspree.io/f/mzdnwbjk" method="POST" id="review-form">
+                    <!-- This helps you identify that the email is a review -->
+                    <input type="hidden" name="_subject" value="New Website Review Received!">
+                    
+                    <div class="form-group">
+                        <label for="reviewer-name">Your Name</label>
+                        <input type="text" id="reviewer-name" name="name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reviewer-email">Your Email</label>
+                        <input type="email" id="reviewer-email" name="email" class="form-control" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="star-rating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <input type="hidden" name="rating" id="rating-value" value="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-text">Your Review</label>
+                        <textarea id="review-text" name="message" class="form-control" rows="4" required placeholder="Share your experience with ABN Technologies..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; padding: 15px;">
+                        Submit Review
+                    </button>
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--gray); margin-top: 15px;">
+                        * Reviews are moderated before being displayed on the site to prevent spam.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section id="contact">
         <div class="container">
@@ -745,6 +859,41 @@
             
             // Open the Paystack iframe
             handler.openIframe();
+        }
+
+                // Star Rating Logic
+        const stars = document.querySelectorAll('#star-rating .star');
+        const ratingInput = document.getElementById('rating-value');
+
+        function updateStars(value) {
+            stars.forEach(s => {
+                if (parseInt(s.dataset.value) <= value) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        }
+
+        if (stars.length > 0) {
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const value = parseInt(star.dataset.value);
+                    ratingInput.value = value;
+                    updateStars(value);
+                });
+
+                star.addEventListener('mouseover', () => {
+                    updateStars(parseInt(star.dataset.value));
+                });
+
+                star.addEventListener('mouseout', () => {
+                    updateStars(parseInt(ratingInput.value));
+                });
+            });
+            
+            // Initialize default 5 stars on page load
+            updateStars(5);
         }
     </script>
 
