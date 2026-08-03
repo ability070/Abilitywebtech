@@ -203,9 +203,53 @@
         }
 
                 /* --- REVIEWS SECTION --- */
-        #reviews { background: white; border-top: 1px solid #e2e8f0; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .review-card { background: var(--light); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; }
+                /* --- REVIEWS SECTION --- */
+        #reviews { background: white; border-top: 1px solid #e2e8f0; overflow: hidden; }
+        
+        /* Wrapper hides the overflow so cards don't break the page layout */
+        .reviews-wrapper {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 60px;
+            position: relative;
+            /* Fades the edges slightly for a premium look */
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        /* The actual moving track */
+        .reviews-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: scrollReviews 25s linear infinite;
+        }
+        
+        /* Pause on hover so people can read */
+        .reviews-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* The magic infinite loop animation */
+        @keyframes scrollReviews {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Moves exactly half the width because of duplication */
+        }
+
+        .review-card { 
+            background: var(--light); 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+            border: 1px solid #e2e8f0; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            min-width: 350px;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex-shrink: 0; /* Keeps cards from shrinking */
+        }
         .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .review-header { display: flex; align-items: center; gap: 15px; }
         .review-avatar { width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; }
@@ -219,6 +263,10 @@
         .star-rating .star { transition: color 0.2s, transform 0.2s; }
         .star-rating .star.active { color: #fbbf24; }
         .star-rating .star:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .review-card { min-width: 280px; max-width: 280px; }
+        }
 
     </style>
 </head>
@@ -659,45 +707,84 @@
             <!-- Displayed Reviews -->
             <div class="reviews-grid" id="reviews-container">
                 <!-- Review 1 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">C</div>
-                        <div class="review-info">
-                            <h4>Chinedu O.</h4>
-                            <p>Business Owner</p>
+                            <!-- Displayed Reviews (Horizontal Roller) -->
+            <div class="reviews-wrapper">
+                <div class="reviews-track">
+                    <!-- === SET 1: ORIGINAL REVIEWS === -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">C</div>
+                            <div class="review-info">
+                                <h4>Chinedu O.</h4>
+                                <p>Business Owner</p>
+                            </div>
                         </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Ability built an incredible e-commerce site for my business. It's fast, secure, and my customers love the design. Highly recommended!"</p>
                     </div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Ability built an incredible e-commerce site for my business. It's fast, secure, and my customers love the design. Highly recommended!"</p>
-                </div>
 
-                <!-- Review 2 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">A</div>
-                        <div class="review-info">
-                            <h4>Amaka E.</h4>
-                            <p>Freelancer</p>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">A</div>
+                            <div class="review-info">
+                                <h4>Amaka E.</h4>
+                                <p>Freelancer</p>
+                            </div>
                         </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"The portfolio template I bought was exactly what I needed. Clean code and very easy to customize. Great support!"</p>
                     </div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"The portfolio template I bought was exactly what I needed. Clean code and very easy to customize. Great support!"</p>
-                </div>
 
-                <!-- Review 3 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">T</div>
-                        <div class="review-info">
-                            <h4>Tunde B.</h4>
-                            <p>Logistics CEO</p>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">T</div>
+                            <div class="review-info">
+                                <h4>Tunde B.</h4>
+                                <p>Logistics CEO</p>
+                            </div>
                         </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Professional, timely delivery, and the tracking system works flawlessly. ABN Technologies is the real deal."</p>
                     </div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Professional, timely delivery, and the tracking system works flawlessly. ABN Technologies is the real deal."</p>
+
+                    <!-- === SET 2: EXACT DUPLICATES FOR SEAMLESS LOOP === -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">C</div>
+                            <div class="review-info">
+                                <h4>Chinedu O.</h4>
+                                <p>Business Owner</p>
+                            </div>
+                        </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Ability built an incredible e-commerce site for my business. It's fast, secure, and my customers love the design. Highly recommended!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">A</div>
+                            <div class="review-info">
+                                <h4>Amaka E.</h4>
+                                <p>Freelancer</p>
+                            </div>
+                        </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"The portfolio template I bought was exactly what I needed. Clean code and very easy to customize. Great support!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">T</div>
+                            <div class="review-info">
+                                <h4>Tunde B.</h4>
+                                <p>Logistics CEO</p>
+                            </div>
+                        </div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Professional, timely delivery, and the tracking system works flawlessly. ABN Technologies is the real deal."</p>
+                    </div>
                 </div>
             </div>
-
             <!-- Review Submission Form -->
             <div class="review-form-container">
                 <h3 style="text-align: center; margin-bottom: 20px;">Leave a Review</h3>
