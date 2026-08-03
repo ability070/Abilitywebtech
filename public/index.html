@@ -67,12 +67,16 @@
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
         
         .logo-container { display: flex; align-items: center; gap: 12px; }
-        .logo-box { 
-            width: 45px; height: 45px; background: var(--primary); color: white; 
-            display: flex; justify-content: center; align-items: center; 
-            font-size: 1.3rem; font-weight: 800; border-radius: 10px; 
-            letter-spacing: -1px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
+.logo-img {
+    width: 45px; 
+    height: 45px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+    transition: transform 0.3s ease;
+}
+.logo-img:hover {
+    transform: scale(1.05); /* Subtle pop effect when hovered */
+}
         .logo-text { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
         .nav-links { display: flex; gap: 30px; list-style: none; }
         .nav-links a { font-weight: 500; transition: color 0.3s; }
@@ -277,9 +281,9 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo-container">
-                    <div class="logo-box">AW</div>
-                    <span class="logo-text">ABN Technologies</span>
-                </a>
+    <img src="favicon.svg" alt="ABN Technologies Logo" class="logo-img">
+    <span class="logo-text">ABN Technologies</span>
+</a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
